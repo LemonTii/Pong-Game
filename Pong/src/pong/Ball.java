@@ -47,7 +47,7 @@ public class Ball
 			if (this.motionY < 0)
 			{
 				this.y = 0;
-				this.motionY = random.nextInt(4);
+				this.motionY = 1 ;//random.nextInt(4);
 
 				if (motionY == 0)
 				{
@@ -56,7 +56,7 @@ public class Ball
 			}
 			else
 			{
-				this.motionY = -random.nextInt(4);
+				this.motionY = -1;//-random.nextInt(4);
 				this.y = pong.height - height;
 
 				if (motionY == 0)
@@ -68,7 +68,7 @@ public class Ball
 
 		if (checkCollision(paddle1) == 1)
 		{
-			this.motionX = 1 + (amountOfHits / 5);
+			this.motionX = 1 + 1;//(amountOfHits / 5);
 			this.motionY = -2 + random.nextInt(4);
 
 			if (motionY == 0)
@@ -80,7 +80,7 @@ public class Ball
 		}
 		else if (checkCollision(paddle2) == 1)
 		{
-			this.motionX = -1 - (amountOfHits / 5);
+			this.motionX = -1 - 1;//(amountOfHits / 5);
 			this.motionY = -2 + random.nextInt(4);
 
 			if (motionY == 0)
@@ -109,7 +109,7 @@ public class Ball
 		this.x = pong.width / 2 - this.width / 2;
 		this.y = pong.height / 2 - this.height / 2;
 
-		this.motionY = -2 + random.nextInt(4);
+		this.motionY = -2 + 3;//random.nextInt(4);
 
 		if (motionY == 0)
 		{

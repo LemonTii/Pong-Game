@@ -13,7 +13,7 @@ public class Paddle
 
 	public int paddleNumber;
 
-	public int x, y, width = 45, height = 250;
+	public int x, y, width = 45, height = 150;
 
 	public int score;
 
@@ -42,7 +42,7 @@ public class Paddle
 
 	public void move(boolean up)
 	{
-		int speed = 10;
+		int speed = 25;
 
 		if (up)
 		{
@@ -63,7 +63,7 @@ public class Paddle
 			}
                         else
 			{
-				y = Pong.pong.height - height;
+				y = Pong.pong.height - height - 5;
                                 
 			}
                         

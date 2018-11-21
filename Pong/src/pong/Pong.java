@@ -28,7 +28,7 @@ public class Pong implements ActionListener, KeyListener
 
 	public static Pong pong;
 
-	public int width = 1000, height = 700;
+	public int width = 1000, height = 710;
 
 	public Renderer renderer;
 
@@ -59,7 +59,7 @@ public class Pong implements ActionListener, KeyListener
 
 		renderer = new Renderer();
 
-		jframe.setSize(width + 15, height +35);
+		jframe.setSize(width + 35, height +35);
 		jframe.setVisible(true);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jframe.add(renderer);
@@ -138,15 +138,15 @@ public class Pong implements ActionListener, KeyListener
 
 				if (botDifficulty == 0)
 				{
-					botCooldown = 20;
+					botCooldown = 25;
 				}
 				if (botDifficulty == 1)
 				{
-					botCooldown = 15;
+					botCooldown = 20;
 				}
 				if (botDifficulty == 2)
 				{
-					botCooldown = 10;
+					botCooldown = 15;
 				}
 			}
 		}
