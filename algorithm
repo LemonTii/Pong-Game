@@ -1,8 +1,107 @@
 Initialize to a menu screen
 Press play
-Select gamemode
-Once gamemode is selected start game according to the gamemode
+Select how many points the game will go up to
+Select either bot or 2 players
 
+If 2 players
+  Player 1's side will be on the left and Player 2's side will be on the right side of the screen along with their paddles
+  Have the ball initally move randomly towards one side (left or right) at an angle
+  Whenever the ball hits a paddle, change the ball's direction to the other side
+  when the ball passes behind the Player 2's paddle, Player 1 gains 1 point
+  when the ball passes behind the Player 1's paddle, Player 2 gains 1 point
+  Power-up appears on a random location on the screen
+  
+  If the ball hits the power up
+    Randomly choose from the paddle speed, ball speed, ball visability and etc. 
+    Randomly change the value of these characteristics accordingly
+    Another power-up will appear as soon as the ball hits a paddle or if the game restarts
+    
+  Change to end screen when either side reaches the selected point limit
+  If Player 1 wins
+    Change to victory screen
+  If User 2 wins 
+    Change to lose screen
+
+If bot
+  Ask For difficulty from easy medium or hard
+  
+  If easy
+    User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
+    Have the ball initally move randomly towards one side (left or right) at an angle
+    Whenever the ball hits a paddle, change the ball's direction to the other side
+    Computer's paddle will follow the ball's location at a slow speed
+    when the ball passes behind the computer paddle, user gains 1 point
+    when the ball passes behind the user's paddle, computer gains 1 point
+    Power-up appears on a random location on the screen
+    If the ball hits the power up
+      Randomly choose from the paddle speed, ball speed, ball visability and etc. 
+      Randomly change the value of these characteristics accordingly
+      Another power-up will appear as soon as the ball hits a paddle or if the game restarts
+    Change to end screen when either side reaches the selected point limit
+    If User wins
+      Change to victory screen
+    If Computer wins 
+      Change to lose screen
+     
+If Medium
+    User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
+    Have the ball initally move randomly towards one side (left or right) at an angle
+    Whenever the ball hits a paddle, change the ball's direction to the other side
+    Computer's paddle will follow the ball's location at a moderate speed
+    when the ball passes behind the computer paddle, user gains 1 point
+    when the ball passes behind the user's paddle, computer gains 1 point
+    Power-up appears on a random location on the screen
+    If the ball hits the power up
+      Randomly choose from the paddle speed, ball speed, ball visability and etc. 
+      Randomly change the value of these characteristics accordingly
+      Another power-up will appear as soon as the ball hits a paddle or if the game restarts
+    Change to end screen when either side reaches the selected point limit
+    If User wins
+      Change to victory screen
+    If Computer wins 
+      Change to lose screen
+
+If easy
+    User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
+    Have the ball initally move randomly towards one side (left or right) at an angle
+    Whenever the ball hits a paddle, change the ball's direction to the other side
+    Computer's paddle will follow the ball's location at a fast speed
+    when the ball passes behind the computer paddle, user gains 1 point
+    when the ball passes behind the user's paddle, computer gains 1 point
+    Power-up appears on a random location on the screen
+    If the ball hits the power up
+      Randomly choose from the paddle speed, ball speed, ball visability and etc. 
+      Randomly change the value of these characteristics accordingly
+      Another power-up will appear as soon as the ball hits a paddle or if the game restarts
+    Change to end screen when either side reaches the selected point limit
+    If User wins
+      Change to victory screen
+    If Computer wins 
+      Change to lose screen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(Later)
 If gamemode is Normal
   Load the game screen
   count down from three
