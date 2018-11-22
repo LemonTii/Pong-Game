@@ -12,6 +12,7 @@ package pong;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
@@ -37,6 +38,8 @@ public class Pong implements ActionListener, KeyListener
 	public Paddle player2;
 
 	public Ball ball;
+        
+        public PowerUp Boom;
 
 	public boolean bot = false, selectingDifficulty;
 
@@ -74,6 +77,7 @@ public class Pong implements ActionListener, KeyListener
 		player1 = new Paddle(this, 1);
 		player2 = new Paddle(this, 2);
 		ball = new Ball(this);
+                Boom = new PowerUp(this);
 	}
 
 	public void update()
@@ -92,22 +96,22 @@ public class Pong implements ActionListener, KeyListener
 
 		if (w)
 		{
-			player1.move(true);
+			player1.move(true, Boom, ball);
 		}
 		if (s)
 		{
-			player1.move(false);
+			player1.move(false, Boom, ball);
 		}
 
 		if (!bot)
 		{
 			if (up)
 			{
-				player2.move(true);
+				player2.move(true, Boom, ball);
 			}
 			if (down)
 			{
-				player2.move(false);
+				player2.move(false, Boom, ball);
 			}
 		}
 		else
@@ -126,13 +130,13 @@ public class Pong implements ActionListener, KeyListener
 			{
 				if (player2.y + player2.height / 2 < ball.y)
 				{
-					player2.move(false);
+					player2.move(false, Boom, ball);
 					botMoves++;
 				}
 
 				if (player2.y + player2.height / 2 > ball.y)
 				{
-					player2.move(true);
+					player2.move(true, Boom, ball);
 					botMoves++;
 				}
 
@@ -152,6 +156,7 @@ public class Pong implements ActionListener, KeyListener
 		}
 
 		ball.update(player1, player2);
+                Boom.update(ball);
 	}
 
 	public void render(Graphics2D g)
@@ -210,10 +215,13 @@ public class Pong implements ActionListener, KeyListener
 
 			g.drawString(String.valueOf(player1.score), width / 2 - 90, 50);
 			g.drawString(String.valueOf(player2.score), width / 2 + 65, 50);
-
+                        
+                        
 			player1.render(g);
 			player2.render(g);
 			ball.render(g);
+                        Boom.render(g);
+                        
 		}
 
 		if (gameStatus == 3)

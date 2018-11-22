@@ -8,6 +8,7 @@ package pong;
 import java.awt.Color;
 import java.awt.Graphics;
 
+
 public class Paddle
 {
 
@@ -16,6 +17,10 @@ public class Paddle
 	public int x, y, width = 45, height = 150;
 
 	public int score;
+        
+        
+        
+        int speed = 22;
 
 	public Paddle(Pong pong, int paddleNumber)
 	{
@@ -40,11 +45,21 @@ public class Paddle
 		g.fillRect(x, y, width, height);
 	}
 
-	public void move(boolean up)
+	public void move(boolean up, PowerUp power, Ball ball)
 	{
-		int speed = 25;
-
-		if (up)
+		
+                
+               if (power.r == 1){
+                   if(ball.numberThatWeNeed <=12 && ball.numberThatWeNeed > 0){
+                    speed = 15;
+                
+                   }
+                   else{
+                       speed = 25;
+                   }
+                }
+		
+                if (up)
 		{
 			if (y - speed > 0)
 			{
@@ -63,7 +78,7 @@ public class Paddle
 			}
                         else
 			{
-				y = Pong.pong.height - height - 5;
+				y = Pong.pong.height - height - 15;
                                 
 			}
                         

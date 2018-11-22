@@ -25,6 +25,10 @@ public class Ball
 	private Pong pong;
 
 	public int amountOfHits;
+        
+        public int numberThatWeNeed;
+        
+        public int time;
 
 	public Ball(Pong pong)
 	{
@@ -38,13 +42,16 @@ public class Ball
 	public void update(Paddle paddle1, Paddle paddle2)
 	{
 		int speed = 5;
+                
+                
 
 		this.x += motionX * speed;
 		this.y += motionY * speed;
 
 		if (this.y + height - motionY > pong.height || this.y + motionY < 0)
 		{
-			if (this.motionY < 0)
+			
+                    if (this.motionY < 0)
 			{
 				this.y = 0;
 				this.motionY = 1 ;//random.nextInt(4);
@@ -70,6 +77,7 @@ public class Ball
 		{
 			this.motionX = 1 + 1;//(amountOfHits / 5);
 			this.motionY = -2 + random.nextInt(4);
+                        
 
 			if (motionY == 0)
 			{
@@ -130,10 +138,12 @@ public class Ball
 	{
 		if (this.x < paddle.x + paddle.width && this.x + width > paddle.x && this.y < paddle.y + paddle.height && this.y + height > paddle.y)
 		{
+                        numberThatWeNeed -= 1;
 			return 1; //bounce
 		}
 		else if ((paddle.x > x && paddle.paddleNumber == 1) || (paddle.x < x - width && paddle.paddleNumber == 2))
 		{
+                        
 			return 2; //score
 		}
 
@@ -144,6 +154,7 @@ public class Ball
 	{
 		g.setColor(Color.WHITE);
 		g.fillOval(x, y, width, height);
+                
 	}
 
 }
