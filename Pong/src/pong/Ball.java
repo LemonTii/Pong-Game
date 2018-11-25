@@ -23,10 +23,14 @@ public class Ball
 	public Random random;
 
 	private Pong pong;
+        
+        public int speedb = 3;
 
 	public int amountOfHits;
         
-        public int numberThatWeNeed;
+        public int balls = -1;
+        
+        public int numberThatWeNeed = -1;
         
         public int time;
 
@@ -39,14 +43,36 @@ public class Ball
 		spawn();
 	}
 
-	public void update(Paddle paddle1, Paddle paddle2)
+	public void update(Paddle paddle1, Paddle paddle2, PowerUp power, Ball ball)
 	{
-		int speed = 5;
+		
+                /*if (power.r == 3 && (power.checkCollision(ball, paddle2) == 1 )|| power.checkCollision(ball, paddle1) == 1){
+                    if(ball.numberThatWeNeed <=12 && ball.numberThatWeNeed > 0){
+                        speedb = 8;
+                    }
+                    else{
+                        speedb = 3;
+                    }
+                }
+                else{
+                    speedb = 3;
+                }*/
                 
-                
-
-		this.x += motionX * speed;
-		this.y += motionY * speed;
+                if(power.r == 3){
+                    if (ball.balls > 0 && ball.balls <=12){
+                        speedb = 7;
+                    }
+                    else if (ball.balls <= 0){
+                        speedb = 3;
+                    }
+                }
+                else{
+                    speedb = 3;
+                }
+                    
+                           
+		this.x += motionX * speedb;
+		this.y += motionY * speedb;
 
 		if (this.y + height - motionY > pong.height || this.y + motionY < 0)
 		{
@@ -73,7 +99,7 @@ public class Ball
 			}
 		}
 
-		if (checkCollision(paddle1) == 1)
+		if (checkCollision(paddle1, power) == 1)
 		{
 			this.motionX = 1 + 1;//(amountOfHits / 5);
 			this.motionY = -2 + random.nextInt(4);
@@ -86,7 +112,7 @@ public class Ball
 
 			amountOfHits++;
 		}
-		else if (checkCollision(paddle2) == 1)
+		else if (checkCollision(paddle2, power) == 1)
 		{
 			this.motionX = -1 - 1;//(amountOfHits / 5);
 			this.motionY = -2 + random.nextInt(4);
@@ -99,12 +125,12 @@ public class Ball
 			amountOfHits++;
 		}
 
-		if (checkCollision(paddle1) == 2)
+		if (checkCollision(paddle1, power) == 2)
 		{
 			paddle2.score++;
 			spawn();
 		}
-		else if (checkCollision(paddle2) == 2)
+		else if (checkCollision(paddle2, power) == 2)
 		{
 			paddle1.score++;
 			spawn();
@@ -134,17 +160,25 @@ public class Ball
 		}
 	}
 
-	public int checkCollision(Paddle paddle)
+	public int checkCollision(Paddle paddle, PowerUp power)
 	{
 		if (this.x < paddle.x + paddle.width && this.x + width > paddle.x && this.y < paddle.y + paddle.height && this.y + height > paddle.y)
 		{
                         numberThatWeNeed -= 1;
+                        
+                        balls -=1;
+                        
+                        
 			return 1; //bounce
+                        
 		}
 		else if ((paddle.x > x && paddle.paddleNumber == 1) || (paddle.x < x - width && paddle.paddleNumber == 2))
 		{
                         
+                        power.spawnPower();
 			return 2; //score
+                        
+                        
 		}
 
 		return 0; //nothing

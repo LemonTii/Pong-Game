@@ -40,6 +40,10 @@ public class Pong implements ActionListener, KeyListener
 	public Ball ball;
         
         public PowerUp Boom;
+        
+        public PowerUp power1;
+        
+        public PowerUp power2;
 
 	public boolean bot = false, selectingDifficulty;
 
@@ -77,7 +81,9 @@ public class Pong implements ActionListener, KeyListener
 		player1 = new Paddle(this, 1);
 		player2 = new Paddle(this, 2);
 		ball = new Ball(this);
-                Boom = new PowerUp(this);
+                Boom = new PowerUp(this, 1);
+                power1 = new PowerUp(this, 2);
+                power2 = new PowerUp(this, 3);
 	}
 
 	public void update()
@@ -97,10 +103,15 @@ public class Pong implements ActionListener, KeyListener
 		if (w)
 		{
 			player1.move(true, Boom, ball);
+                        player1.move(true, power1, ball);
+                        
+                        
 		}
 		if (s)
 		{
 			player1.move(false, Boom, ball);
+                        player1.move(false, power1, ball);
+                        
 		}
 
 		if (!bot)
@@ -108,10 +119,13 @@ public class Pong implements ActionListener, KeyListener
 			if (up)
 			{
 				player2.move(true, Boom, ball);
+                                player2.move(true, power1, ball);
 			}
 			if (down)
 			{
 				player2.move(false, Boom, ball);
+                                player2.move(false, power1, ball);
+                                
 			}
 		}
 		else
@@ -131,12 +145,16 @@ public class Pong implements ActionListener, KeyListener
 				if (player2.y + player2.height / 2 < ball.y)
 				{
 					player2.move(false, Boom, ball);
+                                        player2.move(false, power1, ball);
+                                        
 					botMoves++;
 				}
 
 				if (player2.y + player2.height / 2 > ball.y)
 				{
 					player2.move(true, Boom, ball);
+                                        player2.move(true, power1, ball);
+                                        
 					botMoves++;
 				}
 
@@ -154,9 +172,20 @@ public class Pong implements ActionListener, KeyListener
 				}
 			}
 		}
-
-		ball.update(player1, player2);
-                Boom.update(ball);
+                
+		ball.update(player1, player2, Boom, ball);
+                
+                ball.update(player1, player2, power1, ball);
+                
+                ball.update(player1, player2, power2, ball);
+                
+                Boom.update(ball, player1);
+                power1.update(ball, player1);
+                power2.update(ball, player1);
+                
+                Boom.update(ball, player2);
+                power1.update(ball, player2);
+                power2.update(ball, player1);
 	}
 
 	public void render(Graphics2D g)
@@ -221,6 +250,8 @@ public class Pong implements ActionListener, KeyListener
 			player2.render(g);
 			ball.render(g);
                         Boom.render(g);
+                        power1.render(g);
+                        power2.render(g);
                         
 		}
 

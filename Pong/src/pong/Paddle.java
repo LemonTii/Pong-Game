@@ -20,7 +20,8 @@ public class Paddle
         
         
         
-        int speed = 22;
+        int speed1 = 25;
+        int speed2 = 25;
 
 	public Paddle(Pong pong, int paddleNumber)
 	{
@@ -29,11 +30,14 @@ public class Paddle
 		if (paddleNumber == 1)
 		{
 			this.x = 0;
+                        
+                        
 		}
 
 		if (paddleNumber == 2)
 		{
 			this.x = pong.width - width;
+                        
 		}
 
 		this.y = pong.height / 2 - this.height / 2;
@@ -50,40 +54,85 @@ public class Paddle
 		
                 
                if (power.r == 1){
-                   if(ball.numberThatWeNeed <=12 && ball.numberThatWeNeed > 0){
-                    speed = 15;
+                   if(ball.numberThatWeNeed <=12 && ball.numberThatWeNeed >= 0){
+                    speed1 = 15;
+                    speed2 = 15;
                 
                    }
                    else{
-                       speed = 25;
+                    speed1 = 25;
+                    speed2 = 25; 
                    }
                 }
+               else if (power.r == 2){
+                   if(ball.numberThatWeNeed <=12 && ball.numberThatWeNeed >= 0){
+                           if(power.slow == 1){
+                               speed2 = 15;
+                           }
+                           else{
+                               speed1 = 15;
+                           }
+                       }
+                   else{
+                       speed1 = 25;
+                       speed2 = 25;
+                   }
+                   
+               }
+               
 		
                 if (up)
 		{
-			if (y - speed > 0)
+                    if (paddleNumber == 1){
+			if (y - speed1 > 0)
 			{
-				y -= speed;
+				y -= speed1;
 			}
 			else
 			{
 				y = 0;
 			}
+                    }
+                    else{
+                        if (y - speed2 > 0)
+			{
+				y -= speed2;
+			}
+			else
+			{
+				y = 0;
+			}
+                    }
 		}
 		else
 		{
-			if (y + height + speed < Pong.pong.height)
+                    if(paddleNumber == 1){
+                        if (y + height + speed1 < Pong.pong.height)
 			{
-				y += speed;
+				y += speed1;
 			}
                         else
 			{
-				y = Pong.pong.height - height - 15;
+				y = Pong.pong.height - height - 25;
                                 
 			}
+                    }
+                    else{
+                        if (y + height + speed2 < Pong.pong.height)
+			{
+				y += speed2;
+			}
+                        else
+			{
+				y = Pong.pong.height - height - 25;
+                                
+			}
+                    
+                    }
                         
 		}
 	}
 
+    
 }
 
