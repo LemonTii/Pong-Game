@@ -1,5 +1,4 @@
 Initialize to a menu screen
-Press play
 Select how many points the game will go up to
 Select either bot or 2 players
 
@@ -12,20 +11,31 @@ If 2 players
   Power-up appears on a random location on the screen
   
   If the ball hits the power up
-    Randomly choose from the paddle speed, ball speed, ball visability and etc. 
+    Randomly choose from the paddle speed, ball speed, and etc. 
     Randomly change the value of these characteristics accordingly
     Another power-up will appear as soon as the ball hits a paddle or if the game restarts
     
   Change to end screen when either side reaches the selected point limit
   If Player 1 wins
-    Change to victory screen
-  If User 2 wins 
-    Change to lose screen
+    Change to player 1 victory screen
+    Ask if user would like to play agian or if user would like to go back to the menu
+    If play again
+      repeat from selected gamemode
+    If back to menu
+      repeat from beginning
+      
+  If Player 2 wins 
+    Change to Player 2 victory screen
+    Ask if user would like to play agian or if user would like to go back to the menu
+    If play again
+      repeat from selected gamemode
+    If back to menu
+      repeat from beginning
 
 If bot
   Ask For difficulty from easy medium or hard
   
-  If easy
+  If Easy
     User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
     Have the ball initally move randomly towards one side (left or right) at an angle
     Whenever the ball hits a paddle, change the ball's direction to the other side
@@ -40,8 +50,20 @@ If bot
     Change to end screen when either side reaches the selected point limit
     If User wins
       Change to victory screen
+      Ask if user would like to play agian or if user would like to go back to the menu
+      If play again
+        repeat from selected gamemode
+      If back to menu
+        repeat from beginning
+      
     If Computer wins 
       Change to lose screen
+      Ask if user would like to play agian or if user would like to go back to the menu
+      If play again
+        repeat from selected gamemode
+      If back to menu
+        repeat from beginning
+      
      
 If Medium
     User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
@@ -58,10 +80,22 @@ If Medium
     Change to end screen when either side reaches the selected point limit
     If User wins
       Change to victory screen
+      Ask if user would like to play agian or if user would like to go back to the menu
+      If play again
+        repeat from selected gamemode
+      If back to menu
+        repeat from beginning
+      
     If Computer wins 
       Change to lose screen
+      Ask if user would like to play agian or if user would like to go back to the menu
+      If play again
+        repeat from selected gamemode
+      If back to menu
+        repeat from beginning
+      
 
-If easy
+If Hard
     User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
     Have the ball initally move randomly towards one side (left or right) at an angle
     Whenever the ball hits a paddle, change the ball's direction to the other side
@@ -76,82 +110,17 @@ If easy
     Change to end screen when either side reaches the selected point limit
     If User wins
       Change to victory screen
+      Ask if user would like to play agian or if user would like to go back to the menu
+      If play again
+        repeat from selected gamemode
+      If back to menu
+        repeat from beginning
+      
     If Computer wins 
       Change to lose screen
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(Later)
-If gamemode is Normal
-  Load the game screen
-  count down from three
-  User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
-  Have the ball initally move towards the user's side from the centre
-  Whenever the ball hits a paddle, change the ball's direction to the other side
-  Computer's paddle will follow the ball's location at a speed a lot slower than the ball
-  when the ball passes behind the computer paddle, gain 1 point
-  when the ball passes behind the user's paddle, computer gain 1 point
-  (Time Limit?) Suggest:(Point Limit?)
-  Add up the total points of both computer and user separately
-  
-If gamemode is Arcade
-  Load the game screen
-  count down from three
-  User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
-  Have the ball initally move towards the user's side from the centre
-  Computer's paddle will follow the ball's location at a speed a bit slower than the ball
-  Power-up appears on a random location on the screen
-  If the ball hits the power up
-    Change the characteristics of the ball according to the power-up
-    Another power-up will appear as soon as the ball hits a paddle or if the game restarts
-  (Time Limit?) (Point Limit?)
-  Add up the total points of both computer and user separately
-
-If gamemode is Crazy
-  Load the game screen
-  count down from three
-  User's side will be on the left and computer's side will be on the right side of the screen along with their paddles
-  User's paddle will be smaller than the previous gamemodes
-  Have the ball initally move towards the user's side from the centre
-  Computer's paddle will follow the ball at a speed nearly as fast as the ball
-  Power-up appears on a random location on the screen
-  If the ball hits the power up
-    Randomly choose from the paddle speed, ball speed, ball visability and etc. 
-    Randomly change the value of these characteristics accordingly
-    Another power-up will appear as soon as the ball hits a paddle or if the game restarts
-  If the ball hits a paddle
-    Randomize and change the ball's speed accordingly
-  Add up the total points of both computer and user separately
-
-If total points of user is higher than total points of computer
-  change screen to victory screen
-  ask if user will like to play again
-If total points of user is lower than total points of computer
-  change screen to losing screen
-  ask if user will like to play again
-
-If yes to user will like to play again
-  Repeat program from the start
-If no to user will like to play again
-  Say thank you
-  end program
+      Ask if user would like to play agian or if user would like to go back to the menu
+      If play again
+        repeat from selected gamemode
+      If back to menu
+        repeat from beginning
+      
