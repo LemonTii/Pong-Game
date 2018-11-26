@@ -29,25 +29,25 @@ public class Pong implements ActionListener, KeyListener
 
 	public static Pong pong;
 
-	public int width = 1000, height = 710;
+	public int width = 1000, height = 710; //size of the frame
 
-	public Renderer renderer;
+	public Renderer renderer; //new renderer
 
-	public Paddle player1;
+	public Paddle player1; //player 1's paddle
 
-	public Paddle player2;
+	public Paddle player2; //player 2's paddle
 
-	public Ball ball;
+	public Ball ball; //the ball
         
-        public PowerUp Boom;
+        public PowerUp Boom; //Power Up 1
         
-        public PowerUp power1;
+        public PowerUp power1; //Power Up 2
         
-        public PowerUp power2;
+        public PowerUp power2; //Power Up 3
 
 	public boolean bot = false, selectingDifficulty;
 
-	public boolean w, s, up, down;
+	public boolean w, s, up, down; //keypress booleans
 
 	public int gameStatus = 0, scoreLimit = 7, playerWon; //0 = Menu, 1 = Paused, 2 = Playing, 3 = Over
 
@@ -57,27 +57,32 @@ public class Pong implements ActionListener, KeyListener
 
 	public JFrame jframe;
 
-	public Pong()
+	public Pong() //start up method
 	{
-		Timer timer = new Timer(20, this);
+		Timer timer = new Timer(20, this); //timer 
 		random = new Random();
 
-		jframe = new JFrame("Pong");
+		jframe = new JFrame("Pong"); //new jframe for graphics
 
-		renderer = new Renderer();
+		renderer = new Renderer(); //contructions of renderer
 
-		jframe.setSize(width + 35, height +35);
+                //creation of jframe
+                
+		jframe.setSize(width + 35, height +35); 
 		jframe.setVisible(true);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jframe.add(renderer);
 		jframe.addKeyListener(this);
 
+                //starts timer
 		timer.start();
 	}
 
 	public void start()
 	{
-		gameStatus = 2;
+		//initialzing the ball, the paddles and the powerups
+            
+                gameStatus = 2;
 		player1 = new Paddle(this, 1);
 		player2 = new Paddle(this, 2);
 		ball = new Ball(this);
@@ -88,7 +93,8 @@ public class Pong implements ActionListener, KeyListener
 
 	public void update()
 	{
-		if (player1.score >= scoreLimit)
+		//update these conditions throughout the game to check for a goal
+                if (player1.score >= scoreLimit)
 		{
 			playerWon = 1;
 			gameStatus = 3;
@@ -100,35 +106,35 @@ public class Pong implements ActionListener, KeyListener
 			playerWon = 2;
 		}
 
-		if (w)
+		if (w) //if w is pressed
 		{
 			player1.move(true, Boom, ball);
                         player1.move(true, power1, ball);
                         
                         
 		}
-		if (s)
+		if (s) // if s is pressed
 		{
 			player1.move(false, Boom, ball);
                         player1.move(false, power1, ball);
                         
 		}
 
-		if (!bot)
+		if (!bot) //if the mode is 2 player
 		{
-			if (up)
+			if (up) //if up arrow key is pressed
 			{
 				player2.move(true, Boom, ball);
                                 player2.move(true, power1, ball);
 			}
-			if (down)
+			if (down) //if down arrowkey is pressed
 			{
 				player2.move(false, Boom, ball);
                                 player2.move(false, power1, ball);
                                 
 			}
 		}
-		else
+                else //if the bot mode is selected
 		{
 			if (botCooldown > 0)
 			{
@@ -140,7 +146,7 @@ public class Pong implements ActionListener, KeyListener
 				}
 			}
 
-			if (botMoves < 10)
+			if (botMoves < 10) //tracks the balls movement
 			{
 				if (player2.y + player2.height / 2 < ball.y)
 				{
@@ -157,6 +163,8 @@ public class Pong implements ActionListener, KeyListener
                                         
 					botMoves++;
 				}
+                                
+                                //changes tracking speed based on difficulty
 
 				if (botDifficulty == 0)
 				{
@@ -173,6 +181,8 @@ public class Pong implements ActionListener, KeyListener
 			}
 		}
                 
+                //update every object
+                
 		ball.update(player1, player2, Boom, ball);
                 
                 ball.update(player1, player2, power1, ball);
@@ -188,11 +198,13 @@ public class Pong implements ActionListener, KeyListener
                 power2.update(ball, player1);
 	}
 
-	public void render(Graphics2D g)
+	public void render(Graphics2D g) //render the the graphics of the frame and the objects
 	{
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, width, height);
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                
+                //start screen
 
 		if (gameStatus == 0)
 		{
@@ -211,7 +223,7 @@ public class Pong implements ActionListener, KeyListener
 			}
 		}
 
-		if (selectingDifficulty)
+		if (selectingDifficulty) //when selecting the difficulty using the arrowkeys
 		{
 			String string = botDifficulty == 0 ? "Easy" : (botDifficulty == 1 ? "Medium" : "Hard");
 
@@ -221,14 +233,14 @@ public class Pong implements ActionListener, KeyListener
 			g.drawString("Press Space to Play", width / 2 - 150, height / 2 + 25);
 		}
 
-		if (gameStatus == 1)
+		if (gameStatus == 1) //pausing the game
 		{
 			g.setColor(Color.WHITE);
 			g.setFont(new Font("Arial", 1, 50));
 			g.drawString("PAUSED", width / 2 - 103, height / 2 - 25);
 		}
 
-		if (gameStatus == 1 || gameStatus == 2)
+		if (gameStatus == 1 || gameStatus == 2) //updates the score
 		{
 			g.setColor(Color.WHITE);
 
@@ -245,6 +257,7 @@ public class Pong implements ActionListener, KeyListener
 			g.drawString(String.valueOf(player1.score), width / 2 - 90, 50);
 			g.drawString(String.valueOf(player2.score), width / 2 + 65, 50);
                         
+                        //renders the graphics for all the objects
                         
 			player1.render(g);
 			player2.render(g);
@@ -255,13 +268,13 @@ public class Pong implements ActionListener, KeyListener
                         
 		}
 
-		if (gameStatus == 3)
+		if (gameStatus == 3) //win screen
 		{
 			g.setColor(Color.WHITE);
 			g.setFont(new Font("Arial", 1, 50));
 
 			g.drawString("PONG", width / 2 - 75, 50);
-
+                        //test for who wins
 			if (bot && playerWon == 2)
 			{
 				g.drawString("The Bot Wins!", width / 2 - 170, 200);
@@ -282,7 +295,7 @@ public class Pong implements ActionListener, KeyListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if (gameStatus == 2)
+		if (gameStatus == 2) //updates everything throughout the game
 		{
 			update();
 		}
@@ -292,33 +305,34 @@ public class Pong implements ActionListener, KeyListener
 
 	public static void main(String[] args)
 	{
-		pong = new Pong();
+		pong = new Pong(); //creats a new instance of the pong game
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
+                //key presses
 		int id = e.getKeyCode();
 
-		if (id == KeyEvent.VK_W)
+		if (id == KeyEvent.VK_W) //w
 		{
 			w = true;
 		}
-		else if (id == KeyEvent.VK_S)
+		else if (id == KeyEvent.VK_S) //s
 		{
 			s = true;
 		}
-		else if (id == KeyEvent.VK_UP)
+		else if (id == KeyEvent.VK_UP) //up
 		{
 			up = true;
 		}
-		else if (id == KeyEvent.VK_DOWN)
+		else if (id == KeyEvent.VK_DOWN) //down
 		{
 			down = true;
 		}
-		else if (id == KeyEvent.VK_RIGHT)
+		else if (id == KeyEvent.VK_RIGHT) //right
 		{
-			if (selectingDifficulty)
+			if (selectingDifficulty) //changes difficulty shown on screen
 			{
 				if (botDifficulty < 2)
 				{
@@ -329,14 +343,14 @@ public class Pong implements ActionListener, KeyListener
 					botDifficulty = 0;
 				}
 			}
-			else if (gameStatus == 0)
+			else if (gameStatus == 0) //increases score limit
 			{
 				scoreLimit++;
 			}
 		}
-		else if (id == KeyEvent.VK_LEFT)
+		else if (id == KeyEvent.VK_LEFT) //left
 		{
-			if (selectingDifficulty)
+			if (selectingDifficulty) //changes difficulty the other way
 			{
 				if (botDifficulty > 0)
 				{
@@ -347,23 +361,23 @@ public class Pong implements ActionListener, KeyListener
 					botDifficulty = 2;
 				}
 			}
-			else if (gameStatus == 0 && scoreLimit > 1)
+			else if (gameStatus == 0 && scoreLimit > 1) //lowers the score limit
 			{
 				scoreLimit--;
 			}
 		}
-		else if (id == KeyEvent.VK_ESCAPE && (gameStatus == 2 || gameStatus == 3))
+		else if (id == KeyEvent.VK_ESCAPE && (gameStatus == 2 || gameStatus == 3)) //escape
 		{
 			gameStatus = 0;
 		}
-		else if (id == KeyEvent.VK_SHIFT && gameStatus == 0)
+		else if (id == KeyEvent.VK_SHIFT && gameStatus == 0) //shift
 		{
-			bot = true;
+			bot = true; //bot mode initiated
 			selectingDifficulty = true;
 		}
-		else if (id == KeyEvent.VK_SPACE)
+		else if (id == KeyEvent.VK_SPACE) //space
 		{
-			if (gameStatus == 0 || gameStatus == 3)
+			if (gameStatus == 0 || gameStatus == 3) //starts game
 			{
 				if (!selectingDifficulty)
 				{
@@ -390,6 +404,7 @@ public class Pong implements ActionListener, KeyListener
 	@Override
 	public void keyReleased(KeyEvent e)
 	{
+            //when keys are released
 		int id = e.getKeyCode();
 
 		if (id == KeyEvent.VK_W)

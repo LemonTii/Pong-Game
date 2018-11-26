@@ -16,25 +16,25 @@ import java.util.Random;
 public class Ball
 {
 
-	public int x, y, width = 25, height = 25;
+	public int x, y, width = 25, height = 25; //position of the ball and the radius
 
-	public int motionX, motionY;
+	public int motionX, motionY; //movement
 
 	public Random random;
 
 	private Pong pong;
         
-        public int speedb = 3;
+        public int speedb = 3; //ball speed
 
 	public int amountOfHits;
         
-        public int balls = -1;
+        public int balls = -1; //counter
         
-        public int numberThatWeNeed = -1;
+        public int numberThatWeNeed = -1; //counter
         
         public int time;
 
-	public Ball(Pong pong)
+	public Ball(Pong pong) //constructor
 	{
 		this.pong = pong;
 
@@ -43,7 +43,7 @@ public class Ball
 		spawn();
 	}
 
-	public void update(Paddle paddle1, Paddle paddle2, PowerUp power, Ball ball)
+	public void update(Paddle paddle1, Paddle paddle2, PowerUp power, Ball ball) //what updates all game
 	{
 		
                 /*if (power.r == 3 && (power.checkCollision(ball, paddle2) == 1 )|| power.checkCollision(ball, paddle1) == 1){
@@ -58,7 +58,7 @@ public class Ball
                     speedb = 3;
                 }*/
                 
-                if(power.r == 3){
+                if(power.r == 3){ //consition for power up
                     if (ball.balls > 0 && ball.balls <=12){
                         speedb = 7;
                     }
@@ -71,9 +71,10 @@ public class Ball
                 }
                     
                            
-		this.x += motionX * speedb;
+		this.x += motionX * speedb; //movement
 		this.y += motionY * speedb;
 
+                //ball movement in all
 		if (this.y + height - motionY > pong.height || this.y + motionY < 0)
 		{
 			
@@ -99,6 +100,7 @@ public class Ball
 			}
 		}
 
+                //if collides with paddle, bounces off
 		if (checkCollision(paddle1, power) == 1)
 		{
 			this.motionX = 1 + 1;//(amountOfHits / 5);
@@ -125,7 +127,8 @@ public class Ball
 			amountOfHits++;
 		}
 
-		if (checkCollision(paddle1, power) == 2)
+		//if not score goes up
+                if (checkCollision(paddle1, power) == 2)
 		{
 			paddle2.score++;
 			spawn();
@@ -137,7 +140,7 @@ public class Ball
 		}
 	}
 
-	public void spawn()
+	public void spawn() //spawns the ball after a goal
 	{
 		this.amountOfHits = 0;
 		this.x = pong.width / 2 - this.width / 2;
@@ -160,7 +163,7 @@ public class Ball
 		}
 	}
 
-	public int checkCollision(Paddle paddle, PowerUp power)
+	public int checkCollision(Paddle paddle, PowerUp power) //checks for collision between ball & powerup
 	{
 		if (this.x < paddle.x + paddle.width && this.x + width > paddle.x && this.y < paddle.y + paddle.height && this.y + height > paddle.y)
 		{
@@ -184,7 +187,7 @@ public class Ball
 		return 0; //nothing
 	}
 
-	public void render(Graphics g)
+	public void render(Graphics g) //renders the ball graphics
 	{
 		g.setColor(Color.WHITE);
 		g.fillOval(x, y, width, height);

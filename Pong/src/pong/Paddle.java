@@ -14,7 +14,7 @@ public class Paddle
 
 	public int paddleNumber;
 
-	public int x, y, width = 45, height = 150;
+	public int x, y, width = 45, height = 150; //size and position of paddle
 
 	public int score;
         
@@ -43,20 +43,20 @@ public class Paddle
 		this.y = pong.height / 2 - this.height / 2;
 	}
 
-	public void render(Graphics g)
+	public void render(Graphics g) //graphics
 	{
 		g.setColor(Color.WHITE);
 		g.fillRect(x, y, width, height);
 	}
 
-	public void move(boolean up, PowerUp power, Ball ball)
+	public void move(boolean up, PowerUp power, Ball ball) //paddle movement
 	{
 		
                 
-               if (power.r == 1){
+               if (power.r == 1){ //powerup conditions to slow both paddles
                    if(ball.numberThatWeNeed <=12 && ball.numberThatWeNeed >= 0){
-                    speed1 = 15;
-                    speed2 = 15;
+                    speed1 = 12;
+                    speed2 = 12;
                 
                    }
                    else{
@@ -64,13 +64,13 @@ public class Paddle
                     speed2 = 25; 
                    }
                 }
-               else if (power.r == 2){
+               else if (power.r == 2){ //one paddle slow
                    if(ball.numberThatWeNeed <=12 && ball.numberThatWeNeed >= 0){
                            if(power.slow == 1){
-                               speed2 = 15;
+                               speed2 = 12;
                            }
                            else{
-                               speed1 = 15;
+                               speed1 = 12;
                            }
                        }
                    else{
@@ -81,6 +81,7 @@ public class Paddle
                }
                
 		
+                //boolean conitions allowing the paddle to move
                 if (up)
 		{
                     if (paddleNumber == 1){
@@ -106,6 +107,7 @@ public class Paddle
 		}
 		else
 		{
+                    //defining borders for the paddle's motion
                     if(paddleNumber == 1){
                         if (y + height + speed1 < Pong.pong.height)
 			{

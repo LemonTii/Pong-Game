@@ -17,7 +17,7 @@ import java.util.Random;
  * @author mandar
  */
 public class PowerUp {
-    int type;
+    int type; //type of power up
     int x,y;
     private Pong pong;
     
@@ -40,7 +40,7 @@ public class PowerUp {
         
     }
     
-    public void render(Graphics g){
+    public void render(Graphics g){ //create power ups
         
         
         if (type == 1){
@@ -57,7 +57,7 @@ public class PowerUp {
         }
     }
     
-    public int checkCollision(Ball ball, Paddle paddle){
+    public int checkCollision(Ball ball, Paddle paddle){ //chekc collision between ball and power
         
         if(paddle.paddleNumber == 1){
             slow = 1;
@@ -67,6 +67,8 @@ public class PowerUp {
         }
         
         if((ball.x >= this.x - 30 && ball.x <= this.x + 30) && (ball.y >= this.y -30 && ball.y <= this.y + 30)){
+            
+     
             
             ball.numberThatWeNeed = 12;
             
@@ -93,7 +95,7 @@ public class PowerUp {
         
     }
     
-    public void update(Ball ball, Paddle paddle){
+    public void update(Ball ball, Paddle paddle){ //when power up is hit
         if ((checkCollision(ball, paddle)) == 1){
             
             x = 900;
@@ -106,7 +108,7 @@ public class PowerUp {
         
     }
     
-    public void spawnPower(){
+    public void spawnPower(){ //spawns powerup 
         
         
         
