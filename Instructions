@@ -1,0 +1,22 @@
+Welcome to Pong! With power Ups!
+
+ALL CODE INSIDE OF CODE BRANCH
+
+instructions
+
+each person has a paddle
+player1 moves with w and s and starts on the left of the screen
+player2 moves with up and down arrowkeys and starts on the right of the screen
+
+a ball will spawn and bouce off of walls and paddles
+the goal of the game is to bounce the ball in such a way the it gets past the other players paddle
+if you do that you get one point
+if the ball hits one of the coloured circles something will happen
+
+BLUE: the opponents speed will drop
+RED: both players speeds will drop
+MAGENTA: the balls speed will increase
+
+powerup effects last for 6 turns
+
+once the score limit is reached the game is over and the person with the most amount of points wins the game
