@@ -18,17 +18,13 @@ If 2 players
   Change to end screen when either side reaches the selected point limit
   If Player 1 wins
     Change to player 1 victory screen
-    Ask if user would like to play agian or if user would like to go back to the menu
-    If play again
-      repeat from selected gamemode
+    Ask if user would like to go back to the menu
     If back to menu
       repeat from beginning
       
   If Player 2 wins 
     Change to Player 2 victory screen
-    Ask if user would like to play agian or if user would like to go back to the menu
-    If play again
-      repeat from selected gamemode
+    Ask if user would like to go back to the menu
     If back to menu
       repeat from beginning
 
@@ -50,17 +46,13 @@ If bot
     Change to end screen when either side reaches the selected point limit
     If User wins
       Change to victory screen
-      Ask if user would like to play agian or if user would like to go back to the menu
-      If play again
-        repeat from selected gamemode
+      Ask if user would like to go back to the menu
       If back to menu
         repeat from beginning
       
     If Computer wins 
       Change to lose screen
-      Ask if user would like to play agian or if user would like to go back to the menu
-      If play again
-        repeat from selected gamemode
+      Ask if user would like to go back to the menu
       If back to menu
         repeat from beginning
       
@@ -80,17 +72,13 @@ If Medium
     Change to end screen when either side reaches the selected point limit
     If User wins
       Change to victory screen
-      Ask if user would like to play agian or if user would like to go back to the menu
-      If play again
-        repeat from selected gamemode
+      Ask if user would like to go back to the menu
       If back to menu
         repeat from beginning
       
     If Computer wins 
       Change to lose screen
-      Ask if user would like to play agian or if user would like to go back to the menu
-      If play again
-        repeat from selected gamemode
+      Ask if user would like to go back to the menu
       If back to menu
         repeat from beginning
       
@@ -110,17 +98,13 @@ If Hard
     Change to end screen when either side reaches the selected point limit
     If User wins
       Change to victory screen
-      Ask if user would like to play agian or if user would like to go back to the menu
-      If play again
-        repeat from selected gamemode
+      Ask if user would like to go back to the menu
       If back to menu
         repeat from beginning
       
     If Computer wins 
       Change to lose screen
-      Ask if user would like to play agian or if user would like to go back to the menu
-      If play again
-        repeat from selected gamemode
+      Ask if user would like to go back to the menu
       If back to menu
         repeat from beginning
       
