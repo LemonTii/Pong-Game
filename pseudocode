@@ -1,5 +1,5 @@
 class Ball
-  create small circle called ball on the center of the screen
+  create small circle called ball on the center of the screen colour white
   move the ball in a linear direction randomly at an angle
   if ball collides with top or bottom or paddle
     ball moves in the opposite direction
@@ -17,8 +17,10 @@ class Ball
   elseif ball collides with left or right
     if left
       add one point to player 2
+      screen reset
     elseif right
       add one point to player 1
+      screen reset
     else
       continue with previous ball movements
       
@@ -27,7 +29,51 @@ class Ball
   update ball's movements continuously on the screen
   
 class Paddle
-  create rectangle called paddle 1 on the left side of the screen
-  create rectangle called paddle 2 on the right side of the screen
+  create rectangle called paddle 1 on the left side of the screen colour white
+  create rectangle called paddle 2 on the right side of the screen colour white
 
 class PowerUp
+  when screen is created or reset
+    create small circle called powerup_1 randomly on screen colour magenta
+      disappear when ball collides with this
+    create small circle called powerup_1 randomly on screen colour red 
+      disappear when ball collides with this
+    create small circle called powerup_1 randomly on screen colour blue
+      disappear when ball collides with this
+
+class Pong
+  run
+  create start screen
+  ask how many points the game will go up to
+  ask if game is bots or 2 player
+  if 2 player
+    run Ball
+    run Paddle
+      when 'w' is pressed, move paddle 1 up
+      when 's' is pressed, move paddle 1 down
+      when 'UpArrow' is pressed, move paddle 2 up
+      when 'DownArrow' is pressed, move paddle 2 down
+    run PowerUp
+  if bots
+    ask difficulty from easy, medium or hard
+    if easy
+      run Ball
+      run Paddle
+        when 'w' is pressed, move paddle 1 up
+        when 's' is pressed, move paddle 1 down
+        paddle 2 follows the y movements of ball at a slow speed
+      run PowerUp
+    if medium
+      run Ball
+      run Paddle
+      when 'w' is pressed, move paddle 1 up
+        when 's' is pressed, move paddle 1 down
+        paddle 2 follows the y movements of ball at a faster speed than "if easy"
+      run PowerUp
+    if hard
+      run Ball
+      run Paddle
+      when 'w' is pressed, move paddle 1 up
+        when 's' is pressed, move paddle 1 down
+        paddle 2 follows the y movements of ball at a faster speed than "if medium"
+      run PowerUp
