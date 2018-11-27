@@ -29,4 +29,5 @@ class Ball
 class Paddle
   create rectangle called paddle 1 on the left side of the screen
   create rectangle called paddle 2 on the right side of the screen
-  
+
+class PowerUp
