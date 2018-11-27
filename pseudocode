@@ -1,0 +1,32 @@
+class Ball
+  create small circle called ball on the center of the screen
+  move the ball in a linear direction randomly at an angle
+  if ball collides with top or bottom or paddle
+    ball moves in the opposite direction
+    
+  elseif ball collides with power up
+    if powerup_1
+      speed up the movement of the ball
+    if powerup_2
+      slow down the movement of both paddles
+    if powerup_3
+      slow down the movement of the paddle opposite to which the ball recently collided with
+    else
+      continue with previous ball movements
+      
+  elseif ball collides with left or right
+    if left
+      add one point to player 2
+    elseif right
+      add one point to player 1
+    else
+      continue with previous ball movements
+      
+  else
+    continue on with the movement
+  update ball's movements continuously on the screen
+  
+class Paddle
+  create rectangle called paddle 1 on the left side of the screen
+  create rectangle called paddle 2 on the right side of the screen
+  
